@@ -36,7 +36,7 @@ namespace Task5.CUI
                     continue;
                 }
                 Console.WriteLine("Founded index is: " 
-                    + IndexFinder.GetCenterIndex(array));
+                    + array.GetCenterIndex());
                 Console.WriteLine("Do you want to continue?(y/n)");
                 ans = Console.ReadKey(true);
                 Console.Clear();

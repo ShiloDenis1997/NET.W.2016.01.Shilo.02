@@ -19,7 +19,7 @@ namespace Task5.Logic
         /// <param name="array">An array in which to search</param>
         /// <returns>Index of the found element of -1 if there is no 
         /// such element</returns>
-        public static int GetCenterIndex(int[] array)
+        public static int GetCenterIndex(this int[] array)
         {
             long sum = 0;
             long leftSum = 0;
