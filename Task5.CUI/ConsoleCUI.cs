@@ -11,9 +11,10 @@ namespace Task5.CUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to IndexFinder testing program");
+            Console.WriteLine("Welcome to IndexFinder testing program!");
             Console.WriteLine("Do you want to start?(y/n)");
             ConsoleKeyInfo ans = Console.ReadKey(true);
+            Console.Clear();
             while (ans.Key == ConsoleKey.Y)
             {
                 Console.WriteLine("Enter array elements: ");
@@ -36,6 +37,9 @@ namespace Task5.CUI
                 }
                 Console.WriteLine("Founded index is: " 
                     + IndexFinder.GetCenterIndex(array));
+                Console.WriteLine("Do you want to continue?(y/n)");
+                ans = Console.ReadKey(true);
+                Console.Clear();
             }
 
         }
