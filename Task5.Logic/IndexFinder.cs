@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Task5.Logic
 {
+    /// <summary>
+    /// Class that represents methods to search items in the array
+    /// </summary>
     public static class IndexFinder
     {
         /// <summary>
