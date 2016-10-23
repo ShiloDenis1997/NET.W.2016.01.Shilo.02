@@ -10,7 +10,13 @@ namespace Task7.Logic
     {
         public static int InsertNumber(this int x, int y, int start, int end)
         {
-            return 42;
+            int x1 = x;  
+            for (int i = start; i <= end; i++)
+            {
+                x1 -= (x1 & (1 << i)); //reset bit in the x1
+                x1 += (y & (1 << i)); //add value of bit in the y
+            }
+            return x1;
         }
     }
 }
