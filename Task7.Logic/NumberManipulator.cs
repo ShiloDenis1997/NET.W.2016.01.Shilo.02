@@ -8,7 +8,7 @@ namespace Task7.Logic
 {
     public static class NumberManipulator
     {
-        public static int InsertNumber(this int x, int y, int start, int end)
+        public static int Insertion(this int x, int y, int start, int end)
         {
             int x1 = x;  
             for (int i = start; i <= end; i++)

@@ -22,11 +22,11 @@ namespace Task6.CUI
                 Console.WriteLine("Enter second string: ");
                 string s2 = Console.ReadLine();
                 Console.WriteLine("ConcatUniqueAscending(s1, s2) = " +
-                                    s1.ConcatUniqueAscending(s2));
+                                    s1.Longest(s2));
                 Console.WriteLine("ConcatUniqueAscending(s1, s1) = " +
-                                    s1.ConcatUniqueAscending(s1));
+                                    s1.Longest(s1));
                 Console.WriteLine("ConcatUniqueAscending(s2, s2) = " +
-                                    s2.ConcatUniqueAscending(s2));
+                                    s2.Longest(s2));
                 Console.WriteLine("Do you want to continue?(y/n)");
                 ans = Console.ReadKey(true);
                 Console.Clear();

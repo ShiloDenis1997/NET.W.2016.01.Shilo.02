@@ -22,7 +22,7 @@ namespace Task6.Logic
         /// <param name="s1">first string to manipulate with</param>
         /// <param name="s2">second string to manipulate with</param>
         /// <returns>result string</returns>
-        public static string ConcatUniqueAscending(this string s1, string s2)
+        public static string Longest(this string s1, string s2)
         {
             string s = s1 + s2;
             return new string(s.Intersect(alphabet).OrderBy((c) => c).ToArray());
