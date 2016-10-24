@@ -21,12 +21,13 @@ namespace Task7.Logic
         /// <returns></returns>
         public static int Insertion(this int x, int y, int start, int end)
         {
-            int x1 = x;  
-            for (int i = start, j = 0; i <= end; i++, j++)
-            {
-                x1 -= (x1 & (1 << i)); //reset bit in the x1
-                x1 += (y & (1 << j)) << start; //add value of bit in the y
-            }
+            int x1 = x;
+            int mask = (1 << (end - start + 1)) - 1;
+            int insertion = y & mask;
+            insertion <<= start;
+            mask <<= start;
+            x1 -= x1 & mask;
+            x1 |= insertion;
             return x1;
         }
     }
