@@ -51,6 +51,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NUnitExtension\NUnitExtension.csproj">
+      <Project>{5036be23-4cbc-4fbc-afdb-15d7fca279c8}</Project>
+      <Name>NUnitExtension</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Task7.Logic\Task7.Logic.csproj">
       <Project>{3852b231-cd85-446d-9b48-dca500d268d1}</Project>
       <Name>Task7.Logic</Name>

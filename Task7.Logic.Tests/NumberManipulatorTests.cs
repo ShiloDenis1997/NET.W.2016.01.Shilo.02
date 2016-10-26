@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using NUnitExtension;
 
 namespace Task7.Logic.Tests
 {
@@ -33,5 +34,17 @@ namespace Task7.Logic.Tests
             //assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestCase(6, 5, Description = "Start = 6 > End = 5")]
+        [TestCase(0, 32, Description = "End = 32 > 31")]
+        [ExpectedException(typeof(ArgumentException))]
+        [Test]
+        public void Insertion_StartEnd_ExceptionThrows
+            (int start, int end)
+        {
+            int actual = 0.Insertion(0, start, end);
+            Assert.Fail($"Exception expected {actual} got");
+        }
+        
     }
 }
