@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace Task6.Logic
 {
@@ -14,7 +10,7 @@ namespace Task6.Logic
         /// <summary>
         /// const string variable containing alphabet
         /// </summary>
-        private const string alphabet = "abcdefghijklmnopqrstuvwxyz";
+        private const string Alphabet = "abcdefghijklmnopqrstuvwxyz";
         /// <summary>
         /// This method concats two strings, removes duplicate elements
         /// and sorts remaining elements ascending
@@ -25,7 +21,7 @@ namespace Task6.Logic
         public static string Longest(this string s1, string s2)
         {
             string s = s1 + s2;
-            return new string(s.Intersect(alphabet).OrderBy((c) => c).ToArray());
+            return new string(s.Intersect(Alphabet).OrderBy((c) => c).ToArray());
         }
     }
 }
