@@ -1,4 +1,6 @@
-﻿namespace Task7.Logic
+﻿using System;
+
+namespace Task7.Logic
 {
     /// <summary>
     /// Class that represents methods to manipulate with numbers
@@ -15,6 +17,8 @@
         /// <returns></returns>
         public static int Insertion(this int x, int y, int start, int end)
         {
+            if (start > end)
+                throw new ArgumentException("start > end");
             int x1 = x;
             int mask = (1 << (end - start + 1)) - 1;
             int insertion = y & mask;
