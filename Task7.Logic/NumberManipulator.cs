@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 
 namespace Task7.Logic
 {
@@ -19,14 +20,16 @@ namespace Task7.Logic
         {
             if (start > end)
                 throw new ArgumentException("start > end");
-            int x1 = x;
-            int mask = (1 << (end - start + 1)) - 1;
-            int insertion = y & mask;
+            if (end > 31)
+                throw new ArgumentException("end > 31");
+            uint x1 = (uint)x;
+            uint mask = ((uint)((long)1 << (end - start + 1) - 1));
+            uint insertion = ((uint)y) & mask;
             insertion <<= start;
             mask <<= start;
             x1 -= x1 & mask;
             x1 |= insertion;
-            return x1;
+            return (int)x1;
         }
     }
 }
