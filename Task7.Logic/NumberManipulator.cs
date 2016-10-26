@@ -23,7 +23,7 @@ namespace Task7.Logic
             if (end > 31)
                 throw new ArgumentException("end > 31");
             uint x1 = (uint)x;
-            uint mask = ((uint)((long)1 << (end - start + 1) - 1));
+            uint mask = ((uint)(((long)1 << end - start + 1) - 1));
             uint insertion = ((uint)y) & mask;
             insertion <<= start;
             mask <<= start;
