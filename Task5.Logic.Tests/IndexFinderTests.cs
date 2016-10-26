@@ -16,16 +16,43 @@ namespace Task5.Logic.Tests
             DataAccessMethod.Sequential)]
         [DeploymentItem(@"Task5.Logic.Tests\TestCases.xml")]
         [TestMethod]
-        public void GetCenterIndex_()
+        public void GetCenterIndex_Array_ExpectedResultReturned()
         {
-            Debug.WriteLine(AppDomain.CurrentDomain.GetData("APPBASE"));
-            //arrange
-            //var source = TestContext.DataRow["Array"];
-            int expected = Convert.ToInt32(TestContext.DataRow["ExpectedResult"]);
-            //act
-            int actual = IndexFinder.GetCenterIndex(new int[]{ 1, 2});
-            //Assert
-            Assert.AreEqual(expected, actual);
+            //Arrange
+            var testRow = ((string)TestContext.DataRow["Array"]);
+            string[] source = testRow.Split(new char[] { ' ' }, 
+                StringSplitOptions.RemoveEmptyEntries);
+            int[] testArray;
+            if (string.Compare(testRow, "") == 0)
+                testArray = null;
+            else
+                testArray = Array.ConvertAll(source, (s) => int.Parse(s));
+            int expected;
+            bool parseResult = int.TryParse
+                ((string)TestContext.DataRow["ExpectedResult"], out expected);
+            string exceptionName = (string)TestContext.DataRow["Exception"];
+            string comment = (string)TestContext.DataRow["Comment"];
+            //Act
+            try
+            {
+                int actual = IndexFinder.GetCenterIndex(testArray);
+                //Assert
+                if (parseResult)
+                    Assert.AreEqual(expected, actual, comment);
+                else
+                    Assert.Fail("ExpectedResult has wrong value");
+            }
+            catch (AssertFailedException afex)
+            {
+                Assert.Fail($"{afex.Message}: {comment}");
+            }
+            catch (Exception ex)
+            {
+                if (string.Compare(ex.GetType().Name,exceptionName) == 0)
+                    Assert.IsTrue(true);
+                else
+                    Assert.Fail($"{ex.GetType().Name}: {comment}");
+            }            
         }
     }
 }

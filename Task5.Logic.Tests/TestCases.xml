@@ -1,7 +1,87 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TestCases>
   <TestCase>
-    <Array>3</Array>  
+    <Array>1 2 3 2 1</Array>  
     <ExpectedResult>2</ExpectedResult>
+    <Exception></Exception>
+    <Comment>Center element</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>5 0 0 0</Array>
+    <ExpectedResult>0</ExpectedResult>
+    <Exception></Exception>
+    <Comment>Left boundary</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>0 0 0 5</Array>
+    <ExpectedResult>3</ExpectedResult>
+    <Exception></Exception>
+    <Comment>Right boundary</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>3 4 1 1 1</Array>
+    <ExpectedResult>1</ExpectedResult>
+    <Exception></Exception>
+    <Comment>After first element</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>1 1 1 10 3</Array>
+    <ExpectedResult>3</ExpectedResult>
+    <Exception></Exception>
+    <Comment>Before last element</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>1</Array>
+    <ExpectedResult>0</ExpectedResult>
+    <Exception></Exception>
+    <Comment>One element</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>1 2 3 4</Array>
+    <ExpectedResult>-1</ExpectedResult>
+    <Exception></Exception>
+    <Comment>Even array without center</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>1 2 3 3 1</Array>
+    <ExpectedResult>-1</ExpectedResult>
+    <Exception></Exception>
+    <Comment>Odd array without center</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>1 100 50 -51 1 1</Array>
+    <ExpectedResult>1</ExpectedResult>
+    <Exception></Exception>
+    <Comment>Array with negative numbers. After first</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>100 -2 -3 -2 100</Array>
+    <ExpectedResult>2</ExpectedResult>
+    <Exception></Exception>
+    <Comment>Array with negative numbers. Center element</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>-100 0 0 0</Array>
+    <ExpectedResult>0</ExpectedResult>
+    <Exception></Exception>
+    <Comment>Negative first element. Left boundary</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>0 0 0 -50</Array>
+    <ExpectedResult>3</ExpectedResult>
+    <Exception></Exception>
+    <Comment>Negative last element. Right boundary</Comment>
+  </TestCase>
+  <TestCase>
+    <Array>-1 2 -50 1</Array>
+    <ExpectedResult>2</ExpectedResult>
+    <Exception></Exception>
+    <Comment>Array with negative numbers. Before last</Comment>
+  </TestCase>
+  <TestCase>
+    <Array></Array>
+    <ExpectedResult></ExpectedResult>
+    <Exception>ArgumentNullException</Exception>
+    <Comment>Array is null</Comment>
   </TestCase>
 </TestCases>

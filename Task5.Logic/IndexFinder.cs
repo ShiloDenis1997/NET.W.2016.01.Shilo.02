@@ -21,10 +21,12 @@ namespace Task5.Logic
         /// such element</returns>
         public static int GetCenterIndex(this int[] array)
         {
+            if (array == null)
+                throw new ArgumentNullException("array parameter is null");
             long sum = 0;
             long leftSum = 0;
             foreach (int x in array)
-                sum += x;
+                sum = checked (sum + x); 
             for (int i = 0; i < array.Length; i++)
             {
                 if (sum - leftSum - array[i] == leftSum)
