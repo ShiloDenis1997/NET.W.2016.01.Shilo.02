@@ -19,10 +19,14 @@ namespace Task5.Logic
         /// <param name="array">An array in which to search</param>
         /// <returns>Index of the found element of -1 if there is no 
         /// such element</returns>
-        public static int GetCenterIndex(this int[] array)
+        /// <exception cref="ArgumentNullException">Throws when 
+        /// <paramref name="array"/> is null</exception>
+        public static int? GetCenterIndex(this int[] array)
         {
             if (array == null)
-                throw new ArgumentNullException("array parameter is null");
+                throw new ArgumentNullException($"{nameof(array)} parameter is null");
+            if (array.Length == 0)
+                return null;
             long sum = 0;
             long leftSum = 0;
             foreach (int x in array)
@@ -33,7 +37,7 @@ namespace Task5.Logic
                     return i;
                 leftSum += array[i];
             }
-            return -1;
+            return null;
         }
     }
 }

@@ -44,18 +44,17 @@ namespace Task5.Logic.NUnitTests
             (int[] array, int expected)
         {
             //act
-            int actual = array.GetCenterIndex();
+            int? actual = array.GetCenterIndex();
             //assert
             Assert.AreEqual(expected, actual);
         }
 
         [TestCase(null, Description = "Array null reference test")]
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void GetCenterIndex_Null_ExcpectedArgumentNullException(int[] array)
         {
-            var centerIndex = array.GetCenterIndex();
-            Assert.Fail($"Exception excpected {centerIndex} returned");
+            Assert.Throws(typeof(ArgumentNullException), 
+                () => { array.GetCenterIndex(); });
         }
     }
 }
