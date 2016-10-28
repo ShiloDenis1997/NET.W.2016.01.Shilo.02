@@ -23,14 +23,6 @@ namespace Task6.Logic.Tests
             "abcasfdesdffsgdfhijklfmnopgqhrsteuvwxyassfaz",
             "abcdefghijklmnopqrstuvwxyz",
             Description = "Full alphabet test")]
-        [TestCase("","","",
-            Description = "Empty strings test")]
-        [TestCase(null, "aabbbcdd", "abcd",
-            Description = "null + string test")]
-        [TestCase("abcabcabbab", null, "abc",
-            Description = "string + null test")]
-        [TestCase(null, null, "",
-            Description = "null + null test")]
         [Test]
         public void Longest_Str1Str2_ExpectedReturn
             (string str1, string str2, string expected)
@@ -39,6 +31,27 @@ namespace Task6.Logic.Tests
             string actual = str1.Longest(str2);
             //assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase("", "", typeof(ArgumentException),
+             Description = "Empty strings test")]
+        [TestCase(null, null, typeof(ArgumentException),
+             Description = "null + null test")]
+        [TestCase(null, "aabbbcdd", typeof(ArgumentException),
+            Description = "null + string test")]
+        [TestCase("abcabcabbab", null, typeof(ArgumentException),
+            Description = "string + null test")]
+        [TestCase("1kj2h3ksld", "laksfj", typeof(ArgumentIllegalCharactersException),
+            Description = "First string contains illegal characters")]
+        [TestCase("ashflk", "12jk3h24kj", typeof(ArgumentIllegalCharactersException),
+            Description = "Second string contains illegal characters")]
+        [TestCase(";;'fd", "dfj'k,", typeof(ArgumentIllegalCharactersException),
+            Description = "Both strings contain illegal characters")]
+        [Test]
+        public void Longest_Str1Str2_ExceptionExpected
+            (string s1, string s2, Type expectedExceptionType)
+        {
+            Assert.Throws(expectedExceptionType, () => s1.Longest(s2));
         }
     }
 }
