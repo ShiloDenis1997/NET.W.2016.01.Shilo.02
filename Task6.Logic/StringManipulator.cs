@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace Task6.Logic
 {
@@ -20,8 +21,17 @@ namespace Task6.Logic
         /// <returns>result string</returns>
         public static string Longest(this string s1, string s2)
         {
+            if (s1.IsNullOrEmpty() && s2.IsNullOrEmpty())
+                    throw new ArgumentException
+                        ($"{nameof(s1)} and {nameof(s2)} are empty or null");
+            //ToDo
             string s = s1 + s2;
-            return new string(s.Intersect(Alphabet).OrderBy((c) => c).ToArray());
+            return new string(s.Intersect(Alphabet).OrderBy(c => c).ToArray());
+        }
+
+        private static bool IsNullOrEmpty(this string s)
+        {
+            return string.IsNullOrEmpty(s);
         }
     }
 }
