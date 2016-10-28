@@ -19,9 +19,9 @@ namespace Task5.Logic.NUnitTests
             Description = "Before last boundary test")]
         [TestCase(new[] { 5 }, 0,
             Description = "One element test")]
-        [TestCase(new[] { 1, 2, 3, 4 }, -1,
+        [TestCase(new[] { 1, 2, 3, 4 }, null,
             Description = "Even array without center element")]
-        [TestCase(new[] { 1, 2, 3, 4, 5 }, -1,
+        [TestCase(new[] { 1, 2, 3, 4, 5 }, null,
             Description = "Odd array without center element")]
         [TestCase(new[] { -10, 20, -5, -15 }, 0,
             Description = "Array with negatives. Left boundary test")]
@@ -33,15 +33,15 @@ namespace Task5.Logic.NUnitTests
             Description = "Array with negatives. Before last element test")]
         [TestCase(new[] { -20, -10, -5, -10, -20 }, 2,
             Description = "Array with negatives. Center element test")]
-        [TestCase(new[] { -1, -2, -3, -4 }, -1,
+        [TestCase(new[] { -1, -2, -3, -4 }, null,
             Description = "Even array with negatives without center element")]
-        [TestCase(new[] { -1, -2, -3 }, -1,
+        [TestCase(new[] { -1, -2, -3 }, null,
             Description = "Odd array with negatives without center element")]
         [TestCase(new[] { -2 }, 0,
             Description = "One negative element test")]
         [Test]
         public void GetCenterIndex_Array_ExcpectedArg2
-            (int[] array, int expected)
+            (int[] array, int? expected)
         {
             //act
             int? actual = array.GetCenterIndex();
