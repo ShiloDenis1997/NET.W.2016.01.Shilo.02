@@ -17,6 +17,9 @@ namespace Task7.Logic
         /// <param name="end"> End pos to insert to</param>
         /// <returns>result number <paramref name="x"/> after insertion 
         /// of <paramref name="y"/></returns>
+        /// <exception cref="ArgumentException">Throws when <paramref name="start"/>
+        /// greater than <paramref name="end"/> or when <paramref name="end"/>
+        /// greater than <paramref name="x"/> number of bits</exception>
         public static int Insertion(this int x, int y, int start, int end)
         {
             if (start > end)
