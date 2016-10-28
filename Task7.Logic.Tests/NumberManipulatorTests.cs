@@ -43,7 +43,7 @@ namespace Task7.Logic.Tests
             (int start, int end)
         {
             int actual = 0.Insertion(0, start, end);
-            Assert.Fail($"Exception expected {actual} got");
+            Assert.Fail($"Exception expected, {actual} got");
         }
         
     }

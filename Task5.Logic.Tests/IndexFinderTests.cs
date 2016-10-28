@@ -19,40 +19,50 @@ namespace Task5.Logic.Tests
         public void GetCenterIndex_Array_ExpectedResultReturned()
         {
             //Arrange
-            var testRow = ((string)TestContext.DataRow["Array"]);
-            string[] source = testRow.Split(new char[] { ' ' }, 
-                StringSplitOptions.RemoveEmptyEntries);
-            int[] testArray;
-            if (string.Compare(testRow, "") == 0)
-                testArray = null;
-            else
-                testArray = Array.ConvertAll(source, (s) => int.Parse(s));
-            int expected;
-            bool parseResult = int.TryParse
-                ((string)TestContext.DataRow["ExpectedResult"], out expected);
+            int[] testArray = ParseToArrayHelper
+                ((string)TestContext.DataRow["Array"]);
+            int? expected = ParseToNullableIntHelper
+                ((string)TestContext.DataRow["ExpectedResult"]);
             string exceptionName = (string)TestContext.DataRow["Exception"];
             string comment = (string)TestContext.DataRow["Comment"];
             //Act
+            int? actual = null;
             try
             {
-                int actual = IndexFinder.GetCenterIndex(testArray);
-                //Assert
-                if (parseResult)
-                    Assert.AreEqual(expected, actual, comment);
-                else
-                    Assert.Fail("ExpectedResult has wrong value");
-            }
-            catch (AssertFailedException afex)
-            {
-                Assert.Fail($"{afex.Message}: {comment}");
+                actual = testArray.GetCenterIndex();
             }
             catch (Exception ex)
             {
-                if (string.Compare(ex.GetType().Name,exceptionName) == 0)
+                if (string.CompareOrdinal(ex.GetType().Name, exceptionName) == 0)
+                {
                     Assert.IsTrue(true);
-                else
-                    Assert.Fail($"{ex.GetType().Name}: {comment}");
-            }            
+                    return;
+                }
+                Assert.Fail($"{ex.GetType().Name}: {comment}");
+            }
+            Assert.AreEqual(expected, actual, comment);
+        }
+
+        private int? ParseToNullableIntHelper(string numberAsString)
+        {
+            if (string.CompareOrdinal(numberAsString, "null") == 0)
+                return null;
+            int ret;
+            bool parseResult = int.TryParse
+                (numberAsString, out ret);
+            if (!parseResult)
+                throw new Exception($"{nameof(numberAsString)} = {numberAsString} " +
+                                $"isn't a string representation of nullable int.");
+            return ret;
+        }
+
+        private int[] ParseToArrayHelper(string arrayAsString)
+        {
+            if (string.CompareOrdinal(arrayAsString, "null") == 0)
+                return null;
+            string[] source = arrayAsString.Split(new [] { ' ' },
+                StringSplitOptions.RemoveEmptyEntries);
+           return Array.ConvertAll(source, int.Parse);
         }
     }
 }
